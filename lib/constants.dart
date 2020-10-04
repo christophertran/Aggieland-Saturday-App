@@ -1,12 +1,12 @@
 // External Imports
-//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 // Internal Imports
 import 'package:aggieland_saturday/components/rounded_button.dart';
 
-// firestore instance
-//final kFirestoreInstance = FirebaseFirestore.instance;
+// Firestore instance
+final kFirestoreInstance = FirebaseFirestore.instance;
 
 // Firestore collection keys
 const String kInformationSessions = "information_sessions";

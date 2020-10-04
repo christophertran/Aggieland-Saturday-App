@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 // Internal Imports
 import 'package:aggieland_saturday/constants.dart';
-import 'home_screen.dart';
+import 'package:aggieland_saturday/screens/home_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static String id = 'registration_screen';
