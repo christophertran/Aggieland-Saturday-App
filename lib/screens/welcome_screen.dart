@@ -4,8 +4,9 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 
 // Internal Imports
 import 'package:aggieland_saturday/constants.dart';
-import 'package:aggieland_saturday/screens/login_screen.dart';
-import 'package:aggieland_saturday/screens/registration_screen.dart';
+import 'package:aggieland_saturday/screens/home_screen.dart';
+// import 'package:aggieland_saturday/screens/login_screen.dart';
+// import 'package:aggieland_saturday/screens/registration_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = 'welcome_screen';
@@ -42,7 +43,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: animation.value(),
       backgroundColor: kMaroonPrimary,
       body: Padding(
         padding: kDefEdgeInset,
@@ -73,8 +73,12 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             SizedBox(
               height: 24.0,
             ),
-            buildButton("Log In", context, LoginScreen.id),
-            buildButton("Register", context, RegistrationScreen.id),
+            buildButton(
+                buttonText: "Get Started!",
+                context: context,
+                nextPageID: HomeScreen.id),
+            // buildButton("Log In", context, LoginScreen.id),
+            // buildButton("Register", context, RegistrationScreen.id),
           ],
         ),
       ),

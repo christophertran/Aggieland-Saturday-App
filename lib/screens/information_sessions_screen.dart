@@ -1,5 +1,6 @@
 // External Imports
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Internal Imports
 import 'package:aggieland_saturday/constants.dart';
@@ -13,34 +14,17 @@ class InformationSessionsScreen extends StatefulWidget {
 }
 
 class _InformationSessionsScreenState extends State<InformationSessionsScreen> {
+  final FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
+  static const String _title = "Information Sessions";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(title: _title),
       backgroundColor: kMaroonPrimary,
-      body: Padding(
-        padding: kDefEdgeInset,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Center(
-              child: Column(
-                children: [
-                  Text(
-                    'Information Sessions Screen',
-                  ),
-                  SizedBox(
-                    height: 24.0,
-                  ),
-                  Text(
-                    'This screen will contain information about the days available information session as well as a brief description of them, their location and when it is happening.',
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+      body: buildList(
+          collection: kInformationSessions,
+          firestoreInstance: firestoreInstance),
     );
   }
 }

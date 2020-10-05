@@ -1,5 +1,6 @@
 // External Imports
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Internal Imports
 import 'package:aggieland_saturday/constants.dart';
@@ -13,34 +14,17 @@ class StudentOrganizationScreen extends StatefulWidget {
 }
 
 class _StudentOrganizationScreenState extends State<StudentOrganizationScreen> {
+  final FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
+  static const String _title = "Student Organizations";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(title: _title),
       backgroundColor: kMaroonPrimary,
-      body: Padding(
-        padding: kDefEdgeInset,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Center(
-              child: Column(
-                children: [
-                  Text(
-                    'Student Organizations Screen',
-                  ),
-                  SizedBox(
-                    height: 24.0,
-                  ),
-                  Text(
-                    'This screen will contain information about the organization at the event, it will include the name, a brief description, it\'s location and other essential information',
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+      body: buildList(
+          collection: kStudentOrganizations,
+          firestoreInstance: firestoreInstance),
     );
   }
 }

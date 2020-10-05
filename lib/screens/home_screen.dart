@@ -17,9 +17,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  static const String _title = "Home";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(title: _title),
       backgroundColor: kMaroonPrimary,
       body: Padding(
         padding: kDefEdgeInset,
@@ -27,15 +30,24 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            buildButton("Map", context, MapScreen.id),
-            buildButton("Departments and Programs", context,
-                DepartmentsAndProgramsScreen.id),
             buildButton(
-                "Information Sessions", context, InformationSessionsScreen.id),
+                buttonText: "Map", context: context, nextPageID: MapScreen.id),
             buildButton(
-                "Student Organizations", context, StudentOrganizationScreen.id),
-            buildButton("Feedback", context, FeedbackScreen.id),
-//            buildButton("Extra Shit", context, Extra.id),
+                buttonText: "Departments and Programs",
+                context: context,
+                nextPageID: DepartmentsAndProgramsScreen.id),
+            buildButton(
+                buttonText: "Information Sessions",
+                context: context,
+                nextPageID: InformationSessionsScreen.id),
+            buildButton(
+                buttonText: "Student Organizations",
+                context: context,
+                nextPageID: StudentOrganizationScreen.id),
+            buildButton(
+                buttonText: "Feedback",
+                context: context,
+                nextPageID: FeedbackScreen.id),
           ],
         ),
       ),

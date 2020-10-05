@@ -66,7 +66,10 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 24.0,
             ),
-            buildButton('Log In', context, HomeScreen.id),
+            buildButton(
+                buttonText: 'Log In',
+                context: context,
+                nextPageID: HomeScreen.id),
           ],
         ),
       ),

@@ -66,7 +66,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             SizedBox(
               height: 24.0,
             ),
-            buildButton("Register", context, HomeScreen.id),
+            buildButton(
+                buttonText: "Register",
+                context: context,
+                nextPageID: HomeScreen.id),
           ],
         ),
       ),

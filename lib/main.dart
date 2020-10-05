@@ -1,8 +1,9 @@
 // External Imports
 import 'package:flutter/material.dart';
-// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 // Internal Imports
+import 'package:aggieland_saturday/constants.dart';
 import 'package:aggieland_saturday/screens/login_screen.dart';
 import 'package:aggieland_saturday/screens/departments_and_programs_screen.dart';
 import 'package:aggieland_saturday/screens/feedback_screen.dart';
@@ -14,8 +15,8 @@ import 'package:aggieland_saturday/screens/student_organizations_screen.dart';
 import 'package:aggieland_saturday/screens/welcome_screen.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(AggielandSaturday());
 }
 
@@ -23,7 +24,9 @@ class AggielandSaturday extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark().copyWith(
+        primaryColor: kMaroonSecondary,
+      ),
       initialRoute: WelcomeScreen.id,
       routes: {
         DepartmentsAndProgramsScreen.id: (context) =>
