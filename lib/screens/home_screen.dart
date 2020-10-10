@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const String _title = "Home";
+  static const String _title = kHomeTitle;
 
   @override
   Widget build(BuildContext context) {

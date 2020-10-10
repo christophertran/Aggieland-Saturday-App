@@ -6,27 +6,39 @@ import 'package:flutter/material.dart';
 import 'package:aggieland_saturday/constants.dart';
 import 'package:aggieland_saturday/event.dart';
 
+// const String kHomeTitle = "Home";
+// const String kInformationSessionsTitle = "Information Sessions";
+// const String kFeedbackTitle = "Feedback";
+// const String kStudentOrganizationsTitle = "Student Organizations";
+// const String kDepartmentsAndProgramsTitle = "Departments & Programs";
+
 class Search extends SearchDelegate {
-  Search({String collection, FirebaseFirestore firestoreInstance});
+  Search({@required String title}) {
+    String collection;
 
-  String collection;
-  FirebaseFirestore firestoreInstance;
-
-  void buildEvent(var value) {}
-
-  void queryFirestore({@required String query}) {
-    if (firestoreInstance == null) {
-      firestoreInstance = FirebaseFirestore.instance;
-    }
-    if (collection == null) {
+    if (title == kHomeTitle) {
       collection = kAllEvents;
+    } else if (title == kInformationSessionsTitle) {
+      collection = kInformationSessions;
+    } else if (title == kStudentOrganizationsTitle) {
+      collection = kStudentOrganizations;
+    } else if (title == kDepartmentsAndProgramsTitle) {
+      collection = kDepartmentsAndPrograms;
     }
 
-    // firestoreInstance
-    //     .collection(collection)
-    //     .where(kName, isEqualTo: query)
-    //     .get()
-    //     .then((value) => value.);
+    this.firestoreInstance = FirebaseFirestore.instance;
+    grabCollection(collection: collection);
+  }
+
+  FirebaseFirestore firestoreInstance;
+  Event event;
+
+  void grabCollection({String collection}) {
+    // TODO: Grab collection from firestore based off collection string and store it for queries
+  }
+
+  void queryCollection({String query}) {
+    // TODO: Query the stored collection, figure out how to do suggestions and previous searches?
   }
 
   @override
@@ -53,8 +65,6 @@ class Search extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    Event event;
-
     return Scaffold(
       appBar: buildAppBar(title: event.name, context: context),
       backgroundColor: kMaroonPrimary,

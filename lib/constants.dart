@@ -22,6 +22,13 @@ const String kPresentationTime = "Presentation Time";
 const String kSession = "Session";
 const String kTourTime = "Tour Time";
 
+// Screen Titles
+const String kHomeTitle = "Home";
+const String kInformationSessionsTitle = "Information Sessions";
+const String kFeedbackTitle = "Feedback";
+const String kStudentOrganizationsTitle = "Student Organizations";
+const String kDepartmentsAndProgramsTitle = "Departments & Programs";
+
 const Color kMaroonPrimary = Color(0xFF500000);
 const Color kMaroonSecondary = Color(0xFF3C0000);
 
@@ -57,7 +64,7 @@ AppBar buildAppBar({@required String title, @required var context}) {
     actions: [
       IconButton(
         onPressed: () {
-          showSearch(context: context, delegate: Search());
+          showSearch(context: context, delegate: Search(title: title));
         },
         icon: Icon(Icons.search),
       ),

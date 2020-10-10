@@ -12,6 +12,8 @@ class FeedbackScreen extends StatefulWidget {
 }
 
 class _FeedbackScreenState extends State<FeedbackScreen> {
+  static const String _title = kFeedbackTitle;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

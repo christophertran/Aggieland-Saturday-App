@@ -15,7 +15,7 @@ class StudentOrganizationScreen extends StatefulWidget {
 
 class _StudentOrganizationScreenState extends State<StudentOrganizationScreen> {
   final FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
-  static const String _title = "Student Organizations";
+  static const String _title = kStudentOrganizationsTitle;
 
   @override
   Widget build(BuildContext context) {

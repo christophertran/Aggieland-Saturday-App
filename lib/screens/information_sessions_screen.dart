@@ -15,7 +15,7 @@ class InformationSessionsScreen extends StatefulWidget {
 
 class _InformationSessionsScreenState extends State<InformationSessionsScreen> {
   final FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
-  static const String _title = "Information Sessions";
+  static const String _title = kInformationSessionsTitle;
 
   @override
   Widget build(BuildContext context) {

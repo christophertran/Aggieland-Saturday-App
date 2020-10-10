@@ -16,7 +16,7 @@ class DepartmentsAndProgramsScreen extends StatefulWidget {
 class _DepartmentsAndProgramsScreenState
     extends State<DepartmentsAndProgramsScreen> {
   final FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
-  static const String _title = "Departments & Programs";
+  static const String _title = kDepartmentsAndProgramsTitle;
 
   @override
   Widget build(BuildContext context) {
