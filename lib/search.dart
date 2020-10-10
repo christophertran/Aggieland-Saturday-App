@@ -34,6 +34,12 @@ class Search extends SearchDelegate {
   Event event;
 
   void grabCollection({String collection}) {
+    firestoreInstance.collection(collection).get().then((value) => {
+          value.docs.forEach((element) {
+            listExample.add(element[kName]);
+            print(element[kName]);
+          })
+        });
     // TODO: Grab collection from firestore based off collection string and store it for queries
   }
 
@@ -65,6 +71,11 @@ class Search extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+    if (event == null) {
+      return Scaffold(
+        body: Text("I am a potato, not results omegalul"),
+      );
+    }
     return Scaffold(
       appBar: buildAppBar(title: event.name, context: context),
       backgroundColor: kMaroonPrimary,
@@ -97,8 +108,9 @@ class Search extends SearchDelegate {
     );
   }
 
+  // TODO: How do I add to recent list??
   List<String> recentList = ["Text 4", "Text 3"];
-  List<String> listExample = ["Text 5", "Text 6"];
+  List<String> listExample = ["Text 4", "Text 3"];
 
   @override
   Widget buildSuggestions(BuildContext context) {
@@ -107,7 +119,8 @@ class Search extends SearchDelegate {
     query.isEmpty
         ? suggestionList = recentList
         : suggestionList.addAll(
-            listExample.where((element) => element.contains(query)),
+            listExample.where((element) =>
+                element.toUpperCase().contains(query.toUpperCase())),
           );
 
     return ListView.builder(
