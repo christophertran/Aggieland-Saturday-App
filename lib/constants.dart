@@ -3,11 +3,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 // Internal Imports
+import 'package:aggieland_saturday/search.dart';
 import 'package:aggieland_saturday/screens/event_detail_screen.dart';
 import 'package:aggieland_saturday/event.dart';
 import 'package:aggieland_saturday/components/rounded_button.dart';
 
 // Firestore collection keys
+const String kAllEvents = "all_events";
 const String kInformationSessions = "information_sessions";
 const String kFeedback = "feedback";
 const String kStudentOrganizations = "student_organizations";
@@ -50,19 +52,32 @@ const kTextFieldDecoration = InputDecoration(
   ),
 );
 
-AppBar buildAppBar({String title}) {
+AppBar buildAppBar({@required String title, @required var context}) {
   return AppBar(
+    actions: [
+      IconButton(
+        onPressed: () {
+          showSearch(context: context, delegate: Search());
+        },
+        icon: Icon(Icons.search),
+      ),
+    ],
+    centerTitle: true,
     title: Text(
       title,
       style: TextStyle(
         color: kWhitePrimary,
         fontFamily: "Open Sans",
+        fontSize: 20,
       ),
     ),
   );
 }
 
-RoundedButton buildButton({String buttonText, var context, String nextPageID}) {
+RoundedButton buildButton(
+    {@required String buttonText,
+    @required var context,
+    @required String nextPageID}) {
   return RoundedButton(
     title: buttonText,
     color: kWhitePrimary,
@@ -72,7 +87,9 @@ RoundedButton buildButton({String buttonText, var context, String nextPageID}) {
   );
 }
 
-Widget buildList({String collection, FirebaseFirestore firestoreInstance}) {
+Widget buildList(
+    {@required String collection,
+    @required FirebaseFirestore firestoreInstance}) {
   return new StreamBuilder(
       stream:
           firestoreInstance.collection(collection).orderBy(kName).snapshots(),
@@ -91,11 +108,11 @@ Widget buildList({String collection, FirebaseFirestore firestoreInstance}) {
                   child: ListTile(
                     onTap: () {
                       Event event = new Event(
-                          document[kName],
-                          document[kSession],
-                          document[kLocation],
-                          document[kPresentationTime],
-                          document[kTourTime]);
+                          name: document[kName],
+                          session: document[kSession],
+                          location: document[kLocation],
+                          presentationTime: document[kPresentationTime],
+                          tourTime: document[kTourTime]);
                       Navigator.push(
                         context,
                         MaterialPageRoute(

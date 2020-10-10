@@ -5,6 +5,10 @@ class Event {
   String presentationTime;
   String tourTime;
 
-  Event(this.name, this.session, this.location, this.presentationTime,
-      this.tourTime);
+  Event(
+      {this.name,
+      this.session,
+      this.location,
+      this.presentationTime,
+      this.tourTime});
 }

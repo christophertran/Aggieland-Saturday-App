@@ -21,7 +21,7 @@ class _DepartmentsAndProgramsScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: _title),
+      appBar: buildAppBar(title: _title, context: context),
       backgroundColor: kMaroonPrimary,
       body: buildList(
           collection: kDepartmentsAndPrograms,
