@@ -59,26 +59,41 @@ const kTextFieldDecoration = InputDecoration(
   ),
 );
 
-AppBar buildAppBar({@required String title, @required var context}) {
-  return AppBar(
-    actions: [
-      IconButton(
-        onPressed: () {
-          showSearch(context: context, delegate: Search(title: title));
-        },
-        icon: Icon(Icons.search),
+AppBar buildAppBar(
+    {@required String title, @required var context, @required bool searchBar}) {
+  if (searchBar) {
+    return AppBar(
+      actions: [
+        IconButton(
+          onPressed: () {
+            showSearch(context: context, delegate: Search(title: title));
+          },
+          icon: Icon(Icons.search),
+        ),
+      ],
+      centerTitle: true,
+      title: Text(
+        title,
+        style: TextStyle(
+          color: kWhitePrimary,
+          fontFamily: "Open Sans",
+          fontSize: 20,
+        ),
       ),
-    ],
-    centerTitle: true,
-    title: Text(
-      title,
-      style: TextStyle(
-        color: kWhitePrimary,
-        fontFamily: "Open Sans",
-        fontSize: 20,
+    );
+  } else {
+    return AppBar(
+      centerTitle: true,
+      title: Text(
+        title,
+        style: TextStyle(
+          color: kWhitePrimary,
+          fontFamily: "Open Sans",
+          fontSize: 20,
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 RoundedButton buildButton(

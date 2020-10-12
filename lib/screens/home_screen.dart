@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: _title, context: context),
+      appBar: buildAppBar(title: _title, context: context, searchBar: true),
       backgroundColor: kMaroonPrimary,
       body: Padding(
         padding: kDefEdgeInset,

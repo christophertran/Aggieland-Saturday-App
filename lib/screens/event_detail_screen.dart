@@ -17,7 +17,8 @@ class EventDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: event.name, context: context),
+      appBar:
+          buildAppBar(title: event.name, context: context, searchBar: false),
       backgroundColor: kMaroonPrimary,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -20,7 +20,7 @@ class _InformationSessionsScreenState extends State<InformationSessionsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: _title, context: context),
+      appBar: buildAppBar(title: _title, context: context, searchBar: true),
       backgroundColor: kMaroonPrimary,
       body: buildList(
           collection: kInformationSessions,
